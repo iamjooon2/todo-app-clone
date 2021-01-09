@@ -10,7 +10,7 @@ const App = () => {
     <TodoInsert/>
     <TodoList />
     </TodoTemplate>
-  )
+  );
 };
 
 export default App;
