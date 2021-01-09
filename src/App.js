@@ -13,7 +13,7 @@ const App = () => {
     },
     {
       idx: 2,
-      text: '파이썬으로 자료구조 배우기',
+      text: '파이썬으로 자료구조 공부하기',
       chekced: true,
     },
     {

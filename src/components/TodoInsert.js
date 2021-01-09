@@ -11,6 +11,7 @@ const TodoInsert = () => {
         setValue(e.target.value);
     },[]);
 
+    
     return (
         <form className = "TodoInsert">
             <input placeholder = "할 말을 입력하세요 "
