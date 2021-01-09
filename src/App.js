@@ -45,7 +45,7 @@ const App = () => {
     <TodoInsert onInsert = {onInsert} />
     <TodoList todos = {todos} />
     </TodoTemplate>
-  )
+  );
 };
 
 export default App;
