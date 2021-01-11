@@ -9,50 +9,50 @@ function createBulkTodos() {
     array.push({
       id: i,
       text: `할 일 ${i}`,
-      chekced: false,
+      checked: false,
     });
   }
   return array;
 }
 
-function todoReducer(todos, action){
-  switch (action.type){
-    case 'INSERT' : // 새로 추가하는 경우
-    return todos.concat(action.todo);
-    case 'REMOVE' :
-      return todos.filter(todo => todo.id !== action.id);
-      case 'TOGGLE' :
-        return todos.map(todo => todo.id === action.id
-           ? {...todo, checked: !todo.checked} : todo);
-        default:
-          return todos;        
+function todoReducer(todos, action) {
+  switch (action.type) {
+    case 'INSERT': // 새로 추가하는 경우
+      return todos.concat(action.todo);
+    case 'REMOVE':
+      return todos.filter((todo) => todo.id !== action.id);
+    case 'TOGGLE':
+      return todos.map((todo) =>
+        todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
+      );
+    default:
+      return todos;
   }
 }
 
 const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
-  //고유값으로 사용될 id는 useRef 사용해 변수 담기
-
+  
+  //고유식별값으로 사용될 id는 useRef 사용해 변수로 담는다
   const nextId = useRef(101);
 
-  const onInsert = useCallback(
-    (text) => {
-      const todo = {
-        id: nextId.current,
-        text,
-        checked: false,
-      };
-      dispatch({type : 'INSERT', todo});
-      nextId.current += 1; //nextId에 1씩 추가
-    },[]);
+  const onInsert = useCallback((text) => {
+    const todo = {
+      id: nextId.current,
+      text,
+      checked: false,
+    };
+    dispatch({ type: 'INSERT', todo});
+    nextId.current += 1; //nextId에 1씩 추가
+  }, []);
 
   const onRemove = useCallback(id => {
-      dispatch({type: 'REMOVE', id});
-    },[]);
+    dispatch({ type: 'REMOVE', id });
+  }, []);
 
-  const onToggle = useCallback(id => {
-      dispatch({type: 'TOGGLE', id});
-    },[]);
+  const onToggle = useCallback( id => {
+    dispatch({type: 'TOGGLE', id});
+    }, []);
 
   return (
     <TodoTemplate>

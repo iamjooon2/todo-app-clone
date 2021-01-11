@@ -15,7 +15,7 @@ const TodoInsert = ({onInsert}) => {
       setValue(''); // value값 초기화
 
       // submit 이벤트는 브라우저에서 리프레시 발생시킴
-      // 리프레시 방지 위해 이 함수 호출쓰
+      // 리프레시 방지 위해 이 함수 호출
       e.preventDefault();
     },
     [onInsert, value],
