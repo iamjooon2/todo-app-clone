@@ -5,7 +5,7 @@ import TodoList from './components/TodoList';
 
 function createBulkTodos() {
   const array = [];
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 5000; i++) {
     array.push({
       id: i,
       text: `할 일 ${i}`,
@@ -34,7 +34,7 @@ const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
   
   //고유식별값으로 사용될 id는 useRef 사용해 변수로 담는다
-  const nextId = useRef(101);
+  const nextId = useRef(5001);
 
   const onInsert = useCallback((text) => {
     const todo = {
